@@ -70,6 +70,7 @@
     <Content Include="Global.asax" />
     <Content Include="TablePractice1.aspx" />
     <Content Include="TryGridView.aspx" />
+    <Content Include="TryRepeater.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -91,6 +92,13 @@
     </Compile>
     <Compile Include="TryGridView.aspx.designer.cs">
       <DependentUpon>TryGridView.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TryRepeater.aspx.cs">
+      <DependentUpon>TryRepeater.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TryRepeater.aspx.designer.cs">
+      <DependentUpon>TryRepeater.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
