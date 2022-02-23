@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 
 using System.Data;
+using BindingPractice.Managers;
 
 namespace BindingPractice
 {
@@ -14,19 +15,28 @@ namespace BindingPractice
         protected void Page_Load(object sender, EventArgs e)
         {
             string tableBody = string.Empty;
-            DataTable dt = this.GetDataTable();
+            DataTable dt = this.GetDataSource();
             foreach(DataRow dr in dt.Rows)
             {
+                string mobile = dr["Mobile"] as string;
+                string phoneText = "-";
+
+                if (int.TryParse(mobile, out int number))
+                {
+                    phoneText = mobile;
+                }
+
                 string bodyText = 
                     $@"<tr>
                         <td>{dr["ID"]}</td>
-                        <td>{dr["Name"]}</td>
+                        <td>{dr["Name"]} </td>
+                        <td> {phoneText} </td>
                     </tr>";
                 tableBody += bodyText;
             }
             this.ltlTableBody.Text = tableBody;
         }
-        public DataTable GetDataTable()
+        private DataTable GetDataTable()
         {
             DataTable dt = new DataTable();
             dt.Columns.Add(new DataColumn("ID", typeof(string)));
@@ -48,6 +58,12 @@ namespace BindingPractice
             dt.Rows.Add(dr3);
 
             return dt;
+        }
+
+        private DataTable GetDataSource()
+        {
+            StudentManager mgr = new StudentManager();
+            return mgr.GetDataTable();
         }
     }
 }

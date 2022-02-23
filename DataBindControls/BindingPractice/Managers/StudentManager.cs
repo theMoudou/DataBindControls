@@ -16,7 +16,7 @@ namespace BindingPractice.Managers
         {
             string connStr = "Server=localhost;Database=CSharpLesson;Integrated Security=True;";
             string commandText = @"
-                SELECT [ID], [Name], [Mobile], [ImagePath]
+                SELECT [ID], [Name], Birthday, IsMale, [Mobile], [ImagePath]
                 FROM [StudentInfos] ";
             try
             {

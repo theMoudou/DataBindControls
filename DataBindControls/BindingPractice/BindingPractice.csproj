@@ -69,6 +69,7 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="TablePractice1.aspx" />
+    <Content Include="TryGridView.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -83,6 +84,13 @@
     </Compile>
     <Compile Include="TablePractice1.aspx.designer.cs">
       <DependentUpon>TablePractice1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TryGridView.aspx.cs">
+      <DependentUpon>TryGridView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TryGridView.aspx.designer.cs">
+      <DependentUpon>TryGridView.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

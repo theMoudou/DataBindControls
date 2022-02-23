@@ -4,15 +4,16 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
 
     <style>
-        th{
+        th {
             color: black;
             font-family: Consolas SimHei;
             font-size: 24pt;
         }
+
         td {
             font-family: Consolas;
         }
@@ -24,6 +25,7 @@
             <tr>
                 <th>學號</th>
                 <th>姓名</th>
+                <th>電話</th>
             </tr>
             <asp:Literal ID="ltlTableBody" runat="server"></asp:Literal>
         </table>
