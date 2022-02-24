@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="Images\Dragon.png" />
     <Content Include="TablePractice1.aspx" />
     <Content Include="TryGridView.aspx" />
     <Content Include="TryRepeater.aspx" />
