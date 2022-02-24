@@ -5,6 +5,7 @@ using System.Web;
 
 using System.Data;
 using System.Data.SqlClient;
+using BindingPractice.Models;
 
 namespace BindingPractice.Managers
 {
@@ -35,6 +36,46 @@ namespace BindingPractice.Managers
                 }
             }
             catch(Exception ex)
+            {
+                throw;
+            }
+        }
+
+        public List<StudentInfo> GetStudentList()
+        {
+            string connStr = "Server=localhost;Database=CSharpLesson;Integrated Security=True;";
+            string commandText = @"
+                SELECT ID, Name, Birthday, IsMale, Mobile, ImagePath
+                FROM StudentInfos ";
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connStr))
+                {
+                    using (SqlCommand command = new SqlCommand(commandText, conn))
+                    {
+                        conn.Open();
+                        SqlDataReader reader = command.ExecuteReader();
+
+                        List<StudentInfo> retList = new List<StudentInfo>();    // 將資料庫內容轉為自定義型別清單
+                        while(reader.Read())
+                        {
+                            StudentInfo info = new StudentInfo()
+                            {
+                                ID = reader["ID"] as string,
+                                Name = reader["Name"] as string,
+                                Mobile = reader["Mobile"] as string,
+                                ImagePath = reader["ImagePath"] as string,
+                                Birthday = reader["Birthday"] as DateTime?,
+                                IsMale = reader["IsMale"] as bool?,
+                            };
+                            retList.Add(info);
+                        }
+
+                        return retList;
+                    }
+                }
+            }
+            catch (Exception ex)
             {
                 throw;
             }

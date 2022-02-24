@@ -8,6 +8,7 @@ using System.Web.UI.WebControls;
 
 using BindingPractice.Managers;
 using System.Data;
+using BindingPractice.Models;
 
 namespace BindingPractice
 {
@@ -17,11 +18,20 @@ namespace BindingPractice
         {
             StudentManager mgr = new StudentManager();
             DataTable dt = mgr.GetDataTable();
+            string id1 = dt.Rows[0]["ID"] as string;
 
-            this.GridView1.DataSource = dt;
+            //this.GridView1.DataSource = dt;
+            //this.GridView1.DataBind();
+
+            //this.GridView2.DataSource = dt;
+            //this.GridView2.DataBind();
+            List<StudentInfo> list = mgr.GetStudentList();
+            string id2 = list[0].ID;
+
+            this.GridView1.DataSource = list;
             this.GridView1.DataBind();
 
-            this.GridView2.DataSource = dt;
+            this.GridView2.DataSource = list;
             this.GridView2.DataBind();
         }
     }

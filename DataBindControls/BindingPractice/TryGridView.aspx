@@ -26,6 +26,8 @@
                 <asp:BoundField DataField="ImagePath" HeaderText="圖示" />
                 <asp:BoundField DataField="Birthday" DataFormatString="{0:yyyy/MM/dd}" HeaderText="生日" />
                 <asp:CheckBoxField DataField="IsMale" HeaderText="為男性" />
+                <%--<asp:BoundField DataField="Number1" HeaderText="測試數字" />--%>
+                <asp:BoundField DataField="DiffDays" HeaderText="日數" />
             </Columns>
             <FooterStyle BackColor="#CCCCCC" />
             <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
