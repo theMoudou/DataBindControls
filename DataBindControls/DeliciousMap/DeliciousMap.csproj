@@ -7,12 +7,12 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{CC4456D9-C489-40E2-B7BC-15AFD7582CE6}</ProjectGuid>
+    <ProjectGuid>{05B2B695-050F-4035-85E8-64595F330879}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BindingPractice</RootNamespace>
-    <AssemblyName>BindingPractice</AssemblyName>
+    <RootNamespace>DeliciousMap</RootNamespace>
+    <AssemblyName>DeliciousMap</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
@@ -67,42 +67,34 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="BackAdmin\MapContentEditor.aspx" />
     <Content Include="Global.asax" />
-    <Content Include="Images\Dragon.png" />
-    <Content Include="TablePractice1.aspx" />
-    <Content Include="TryGridView.aspx" />
-    <Content Include="TryRepeater.aspx" />
+    <Content Include="MapContentList.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BackAdmin\MapContentEditor.aspx.cs">
+      <DependentUpon>MapContentEditor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BackAdmin\MapContentEditor.aspx.designer.cs">
+      <DependentUpon>MapContentEditor.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\ConfigHelper.cs" />
-    <Compile Include="Managers\StudentManager.cs" />
-    <Compile Include="Models\StudentInfo.cs" />
+    <Compile Include="Helpers\Logger.cs" />
+    <Compile Include="Managers\MapContentManager.cs" />
+    <Compile Include="MapContentList.aspx.cs">
+      <DependentUpon>MapContentList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MapContentList.aspx.designer.cs">
+      <DependentUpon>MapContentList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MapContent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TablePractice1.aspx.cs">
-      <DependentUpon>TablePractice1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="TablePractice1.aspx.designer.cs">
-      <DependentUpon>TablePractice1.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="TryGridView.aspx.cs">
-      <DependentUpon>TryGridView.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="TryGridView.aspx.designer.cs">
-      <DependentUpon>TryGridView.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="TryRepeater.aspx.cs">
-      <DependentUpon>TryRepeater.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="TryRepeater.aspx.designer.cs">
-      <DependentUpon>TryRepeater.aspx</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -129,9 +121,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>64682</DevelopmentServerPort>
+          <DevelopmentServerPort>57005</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:64682/</IISUrl>
+          <IISUrl>http://localhost:57005/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

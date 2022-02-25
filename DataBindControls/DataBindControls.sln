@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.32106.194
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BindingPractice", "BindingPractice\BindingPractice.csproj", "{CC4456D9-C489-40E2-B7BC-15AFD7582CE6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeliciousMap", "DeliciousMap\DeliciousMap.csproj", "{05B2B695-050F-4035-85E8-64595F330879}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{CC4456D9-C489-40E2-B7BC-15AFD7582CE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CC4456D9-C489-40E2-B7BC-15AFD7582CE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CC4456D9-C489-40E2-B7BC-15AFD7582CE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05B2B695-050F-4035-85E8-64595F330879}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05B2B695-050F-4035-85E8-64595F330879}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05B2B695-050F-4035-85E8-64595F330879}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05B2B695-050F-4035-85E8-64595F330879}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
