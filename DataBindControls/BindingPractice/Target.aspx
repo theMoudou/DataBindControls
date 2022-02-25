@@ -10,7 +10,12 @@
 <body>
     <form id="form1" runat="server">
         Q1: <asp:Literal runat="server" ID="ltl1"></asp:Literal><br />
-        Q2: <asp:Literal runat="server" ID="ltl2"></asp:Literal>
+        Q2: <asp:Literal runat="server" ID="ltl2"></asp:Literal><br />
+
+        RequestInfo: <asp:Literal runat="server" ID="ltlRequestInfo"></asp:Literal><br />
+
+        <asp:TextBox runat="server" ID="txt1">Test Value</asp:TextBox><br />
+        <asp:Button runat="server" ID="btn1" Text="POST" OnClick="btn1_Click" />
     </form>
 </body>
 </html>
