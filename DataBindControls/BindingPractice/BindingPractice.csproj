@@ -72,7 +72,9 @@
     <Content Include="Source.aspx" />
     <Content Include="TablePractice1.aspx" />
     <Content Include="Target.aspx" />
+    <Content Include="TryFileDownload.aspx" />
     <Content Include="TryGridView.aspx" />
+    <Content Include="TryHttpError.aspx" />
     <Content Include="TryRepeater.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -105,12 +107,26 @@
     <Compile Include="Target.aspx.designer.cs">
       <DependentUpon>Target.aspx</DependentUpon>
     </Compile>
+    <Compile Include="TryFileDownload.aspx.cs">
+      <DependentUpon>TryFileDownload.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TryFileDownload.aspx.designer.cs">
+      <DependentUpon>TryFileDownload.aspx</DependentUpon>
+    </Compile>
     <Compile Include="TryGridView.aspx.cs">
       <DependentUpon>TryGridView.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="TryGridView.aspx.designer.cs">
       <DependentUpon>TryGridView.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TryHttpError.aspx.cs">
+      <DependentUpon>TryHttpError.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TryHttpError.aspx.designer.cs">
+      <DependentUpon>TryHttpError.aspx</DependentUpon>
     </Compile>
     <Compile Include="TryRepeater.aspx.cs">
       <DependentUpon>TryRepeater.aspx</DependentUpon>
@@ -131,6 +147,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="FileDownload\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

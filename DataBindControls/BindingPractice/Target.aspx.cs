@@ -44,6 +44,8 @@ namespace BindingPractice
 
             NameValueCollection headerCollection = this.Request.Headers;
             this.ltlRequestInfo.Text += $"Host: {headerCollection["Host"]} <br/>";
+
+            this.ltlRequestInfo.Text += $"Http Method: {this.Request.HttpMethod} <br/>";
         }
 
         protected void btn1_Click(object sender, EventArgs e)
