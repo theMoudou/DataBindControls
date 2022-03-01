@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BindingPractice", "BindingP
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeliciousMap", "DeliciousMap\DeliciousMap.csproj", "{05B2B695-050F-4035-85E8-64595F330879}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TryTemplates", "TryTemplates\TryTemplates.csproj", "{D6C45FFB-8FAA-449A-ABF8-7A8B2F87404A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{05B2B695-050F-4035-85E8-64595F330879}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{05B2B695-050F-4035-85E8-64595F330879}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{05B2B695-050F-4035-85E8-64595F330879}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6C45FFB-8FAA-449A-ABF8-7A8B2F87404A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6C45FFB-8FAA-449A-ABF8-7A8B2F87404A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6C45FFB-8FAA-449A-ABF8-7A8B2F87404A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6C45FFB-8FAA-449A-ABF8-7A8B2F87404A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
