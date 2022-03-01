@@ -39,6 +39,12 @@ namespace DeliciousMap.Managers
             return result;
         }
 
+        public bool IsLogined()
+        {
+            MemberAccount account = GetCurrentUser();
+            return (account != null);
+        }
+
         public MemberAccount GetCurrentUser()
         {
             MemberAccount account = HttpContext.Current.Session["MemberAccount"] as MemberAccount;
