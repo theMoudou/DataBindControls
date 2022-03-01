@@ -69,13 +69,18 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="Images\Dragon.png" />
+    <Content Include="TryCache.aspx" />
+    <Content Include="TryHttpItem.aspx" />
     <Content Include="Source.aspx" />
     <Content Include="TablePractice1.aspx" />
     <Content Include="Target.aspx" />
+    <Content Include="TryApplication.aspx" />
+    <Content Include="TryCookie.aspx" />
     <Content Include="TryFileDownload.aspx" />
     <Content Include="TryGridView.aspx" />
     <Content Include="TryHttpError.aspx" />
     <Content Include="TryRepeater.aspx" />
+    <Content Include="TrySession.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -86,6 +91,20 @@
     <Compile Include="Managers\StudentManager.cs" />
     <Compile Include="Models\StudentInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TryCache.aspx.cs">
+      <DependentUpon>TryCache.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TryCache.aspx.designer.cs">
+      <DependentUpon>TryCache.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TryHttpItem.aspx.cs">
+      <DependentUpon>TryHttpItem.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TryHttpItem.aspx.designer.cs">
+      <DependentUpon>TryHttpItem.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Source.aspx.cs">
       <DependentUpon>Source.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -106,6 +125,20 @@
     </Compile>
     <Compile Include="Target.aspx.designer.cs">
       <DependentUpon>Target.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TryApplication.aspx.cs">
+      <DependentUpon>TryApplication.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TryApplication.aspx.designer.cs">
+      <DependentUpon>TryApplication.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TryCookie.aspx.cs">
+      <DependentUpon>TryCookie.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TryCookie.aspx.designer.cs">
+      <DependentUpon>TryCookie.aspx</DependentUpon>
     </Compile>
     <Compile Include="TryFileDownload.aspx.cs">
       <DependentUpon>TryFileDownload.aspx</DependentUpon>
@@ -134,6 +167,13 @@
     </Compile>
     <Compile Include="TryRepeater.aspx.designer.cs">
       <DependentUpon>TryRepeater.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TrySession.aspx.cs">
+      <DependentUpon>TrySession.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TrySession.aspx.designer.cs">
+      <DependentUpon>TrySession.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
