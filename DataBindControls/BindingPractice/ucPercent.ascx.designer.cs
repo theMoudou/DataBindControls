@@ -11,34 +11,52 @@ namespace BindingPractice
 {
 
 
-    public partial class TryMasterPage2
+    public partial class ucPercent
     {
 
         /// <summary>
-        /// ucPercent1 控制項。
+        /// txt 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::BindingPractice.ucPercent ucPercent1;
+        protected global::System.Web.UI.WebControls.TextBox txt;
 
         /// <summary>
-        /// ucPercent2 控制項。
+        /// btn 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::BindingPractice.ucPercent ucPercent2;
+        protected global::System.Web.UI.WebControls.Button btn;
 
         /// <summary>
-        /// ucPercent3 控制項。
+        /// ltlPercent 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::BindingPractice.ucPercent ucPercent3;
+        protected global::System.Web.UI.WebControls.Literal ltlPercent;
+
+        /// <summary>
+        /// div1 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div1;
+
+        /// <summary>
+        /// ltlPercent2 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal ltlPercent2;
     }
 }

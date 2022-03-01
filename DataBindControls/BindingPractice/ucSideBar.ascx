@@ -3,9 +3,8 @@
 <div class="box-body block-body">
     <div class="bar blockheader">
         <h3 class="t">
-            
-            <asp:Literal runat="server" ID="ltlTitle"></asp:Literal>
-
+            <%--<asp:Literal runat="server" ID="ltlTitle"></asp:Literal>--%>
+            <asp:Label runat="server" ID="ltlTitle"></asp:Label>
         </h3>
     </div>
     <div class="box blockcontent">

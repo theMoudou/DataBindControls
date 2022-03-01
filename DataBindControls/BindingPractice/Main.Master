@@ -107,7 +107,7 @@
                                 <div class="layout-cell sidebar1">
                                     <div class="box block">
 
-                                        <uc1:ucSideBar runat="server" id="ucSideBar1" />
+                                        <uc1:ucSideBar runat="server" id="ucSideBar1" SideBarTitle="測試測試" Value="200" TextColor="Snow" />
                                         <uc1:ucSideBar runat="server" id="ucSideBar2" />
                                         <uc1:ucSideBar runat="server" ID="ucSideBar3" />
                                     </div>

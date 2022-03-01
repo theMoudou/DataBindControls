@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -19,6 +20,8 @@ namespace BindingPractice
 
 
             List<SideBar> sideBarList = this.ReadDBSideBar();
+            this.ucSideBar1.Value = 100;
+            this.ucSideBar1.TextColor = Color.Snow;
             this.ucSideBar1.SideBarTitle = sideBarList[0].Title;
             this.ucSideBar1.SideBarContent = sideBarList[0].Content;
 
