@@ -67,12 +67,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="BackAdmin\index.aspx" />
     <Content Include="BackAdmin\MapContentEditor.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="Login.aspx" />
     <Content Include="MapContentList.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BackAdmin\index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BackAdmin\index.aspx.designer.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
     <Compile Include="BackAdmin\MapContentEditor.aspx.cs">
       <DependentUpon>MapContentEditor.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -85,6 +94,14 @@
     </Compile>
     <Compile Include="Helpers\ConfigHelper.cs" />
     <Compile Include="Helpers\Logger.cs" />
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Managers\AccountManager.cs" />
     <Compile Include="Managers\MapContentManager.cs" />
     <Compile Include="MapContentList.aspx.cs">
       <DependentUpon>MapContentList.aspx</DependentUpon>
@@ -93,6 +110,7 @@
     <Compile Include="MapContentList.aspx.designer.cs">
       <DependentUpon>MapContentList.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Account.cs" />
     <Compile Include="Models\MapContent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
