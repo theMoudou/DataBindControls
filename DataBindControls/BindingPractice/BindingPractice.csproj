@@ -79,6 +79,8 @@
     <Content Include="TryFileDownload.aspx" />
     <Content Include="TryGridView.aspx" />
     <Content Include="TryHttpError.aspx" />
+    <Content Include="TryMasterPage.aspx" />
+    <Content Include="TryMasterPage2.aspx" />
     <Content Include="TryRepeater.aspx" />
     <Content Include="TrySession.aspx" />
     <Content Include="Web.config" />
@@ -88,6 +90,13 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\ConfigHelper.cs" />
+    <Compile Include="Main.Master.cs">
+      <DependentUpon>Main.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Main.Master.designer.cs">
+      <DependentUpon>Main.Master</DependentUpon>
+    </Compile>
     <Compile Include="Managers\StudentManager.cs" />
     <Compile Include="Models\StudentInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -161,6 +170,20 @@
     <Compile Include="TryHttpError.aspx.designer.cs">
       <DependentUpon>TryHttpError.aspx</DependentUpon>
     </Compile>
+    <Compile Include="TryMasterPage.aspx.cs">
+      <DependentUpon>TryMasterPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TryMasterPage.aspx.designer.cs">
+      <DependentUpon>TryMasterPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TryMasterPage2.aspx.cs">
+      <DependentUpon>TryMasterPage2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TryMasterPage2.aspx.designer.cs">
+      <DependentUpon>TryMasterPage2.aspx</DependentUpon>
+    </Compile>
     <Compile Include="TryRepeater.aspx.cs">
       <DependentUpon>TryRepeater.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -177,6 +200,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Main.Master" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

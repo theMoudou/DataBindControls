@@ -1,0 +1,159 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Main.master.cs" Inherits="BindingPractice.Main" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>My Master Page </title>
+
+    <link rel="stylesheet" href="style.css" type="text/css" media="screen" />
+    <!--[if IE 6]><link rel="stylesheet" href="style.ie6.css" type="text/css" media="screen" /><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="style.ie7.css" type="text/css" media="screen" /><![endif]-->
+
+    <style type="text/css">
+        .post .layout-item-0 {
+            padding-right: 0px;
+            padding-left: 0px;
+        }
+
+        .post .layout-item-1 {
+            border-top-width: 1px;
+            border-top-style: solid;
+            border-top-color: #DEDEDE;
+        }
+
+        .post .layout-item-2 {
+            padding: 10px;
+        }
+
+        .post .layout-item-3 {
+            padding: 5px;
+        }
+
+        .ie7 .post .layout-cell {
+            border: none !important;
+            padding: 0 !important;
+        }
+
+        .ie6 .post .layout-cell {
+            border: none !important;
+            padding: 0 !important;
+        }
+    </style>
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div id="main">
+            <div class="cleared reset-box"></div>
+            <div class="bar nav">
+                <div class="nav-outer">
+                    <div class="nav-wrapper">
+                        <div class="nav-inner">
+                            <ul class="hmenu">
+                                <%--<li>
+                                    <a href="./index.html" class="active">Home</a>
+                                </li>
+                                <li>
+                                    <a href="./index.html">About Us</a>
+                                </li>
+                                <li>
+                                    <a href="./contact.html">Contact Us</a>
+                                </li>--%>
+                                <asp:Repeater ID="rptHeaderLink" runat="server">
+                                    <ItemTemplate>
+                                        <li>
+                                            <a href="<%# Eval("Url") %>"><%# Eval("Name") %></a>
+                                        </li>
+                                    </ItemTemplate>
+                                </asp:Repeater>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="cleared reset-box"></div>
+            <div class="box sheet">
+                <div class="box-body sheet-body">
+                    <div class="layout-wrapper">
+                        <div class="content-layout">
+                            <div class="content-layout-row">
+                                <div class="layout-cell content">
+                                    <div class="box post">
+                                        <div class="box-body post-body">
+                                            <div class="post-inner article">
+                                                <div class="postcontent">
+
+                                                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                                                    </asp:ContentPlaceHolder>
+
+                                                </div>
+                                                <div class="cleared"></div>
+                                            </div>
+
+                                            <div class="cleared"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="cleared"></div>
+                                </div>
+                                <div class="layout-cell sidebar1">
+                                    <div class="box block">
+                                        <div class="box-body block-body">
+                                            <div class="bar blockheader">
+                                                <h3 class="t">Latest Post</h3>
+                                            </div>
+                                            <div class="box blockcontent">
+                                                <div class="box-body blockcontent-body">
+                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+
+                                                    <p>Etiam pharetra, tellus sit amet congue vulputate, nisi erat iaculis nibh, vitae feugiat sapien ante eget mauris.</p>
+
+                                                    <p>
+                                                        <br />
+                                                    </p>
+
+                                                    <p>
+                                                        <span style="color: rgb(57, 65, 61);">Aenean sollicitudin imperdiet arcu, vitae dignissim est posuere id.</span><br />
+                                                    </p>
+
+                                                    <p>
+                                                        <span style="color: rgb(57, 65, 61);">Suspendisse pharetra auctor pharetra. Nunc a sollicitudin est.</span><span style="color: rgb(57, 65, 61);"><br />
+                                                        </span>
+                                                    </p>
+                                                    <div class="cleared"></div>
+                                                </div>
+                                            </div>
+                                            <div class="cleared"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="cleared"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cleared"></div>
+                    <div class="footer">
+                        <div class="footer-body">
+                            <div class="footer-text">
+                                <p>Copyright © 2013. All Rights Reserved.</p>
+                                <div class="cleared"></div>
+                                <p class="page-footer">Designed by <a href="http://www.websitedesigndurban.com" target="_blank">www.websitedesigndurban.com</a>.</p>
+                            </div>
+                            <div class="cleared"></div>
+                        </div>
+                    </div>
+                    <div class="cleared"></div>
+                </div>
+            </div>
+            <div class="cleared"></div>
+        </div>
+
+    </form>
+</body>
+</html>
