@@ -1,5 +1,8 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Main.master.cs" Inherits="BindingPractice.Main" %>
 
+<%@ Register Src="~/ucSideBar.ascx" TagPrefix="uc1" TagName="ucSideBar" %>
+
+
 <!DOCTYPE html>
 
 <html>
@@ -103,33 +106,10 @@
                                 </div>
                                 <div class="layout-cell sidebar1">
                                     <div class="box block">
-                                        <div class="box-body block-body">
-                                            <div class="bar blockheader">
-                                                <h3 class="t">Latest Post</h3>
-                                            </div>
-                                            <div class="box blockcontent">
-                                                <div class="box-body blockcontent-body">
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
 
-                                                    <p>Etiam pharetra, tellus sit amet congue vulputate, nisi erat iaculis nibh, vitae feugiat sapien ante eget mauris.</p>
-
-                                                    <p>
-                                                        <br />
-                                                    </p>
-
-                                                    <p>
-                                                        <span style="color: rgb(57, 65, 61);">Aenean sollicitudin imperdiet arcu, vitae dignissim est posuere id.</span><br />
-                                                    </p>
-
-                                                    <p>
-                                                        <span style="color: rgb(57, 65, 61);">Suspendisse pharetra auctor pharetra. Nunc a sollicitudin est.</span><span style="color: rgb(57, 65, 61);"><br />
-                                                        </span>
-                                                    </p>
-                                                    <div class="cleared"></div>
-                                                </div>
-                                            </div>
-                                            <div class="cleared"></div>
-                                        </div>
+                                        <uc1:ucSideBar runat="server" id="ucSideBar1" />
+                                        <uc1:ucSideBar runat="server" id="ucSideBar2" />
+                                        <uc1:ucSideBar runat="server" ID="ucSideBar3" />
                                     </div>
 
                                     <div class="cleared"></div>

@@ -83,6 +83,7 @@
     <Content Include="TryMasterPage2.aspx" />
     <Content Include="TryRepeater.aspx" />
     <Content Include="TrySession.aspx" />
+    <Content Include="ucSideBar.ascx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -197,6 +198,13 @@
     </Compile>
     <Compile Include="TrySession.aspx.designer.cs">
       <DependentUpon>TrySession.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ucSideBar.ascx.cs">
+      <DependentUpon>ucSideBar.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ucSideBar.ascx.designer.cs">
+      <DependentUpon>ucSideBar.ascx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
