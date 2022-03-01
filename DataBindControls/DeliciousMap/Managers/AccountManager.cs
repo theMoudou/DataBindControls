@@ -17,6 +17,9 @@ namespace DeliciousMap.Managers
 
             MemberAccount member = this.GetAccount(account);
 
+            if (member == null) // 找不到就代表登入失敗
+                return false;
+
             if (string.Compare(member.Account, account, true) == 0)
                 isAccountRight = true;
 
