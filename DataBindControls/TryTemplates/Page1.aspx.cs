@@ -16,6 +16,13 @@ namespace TryTemplates
                 //this.txt.Text = this.ucText.Text;
                 this.txt.Text = this.ucText.GetLabelText();
             }
+
+
+            //Label lbl = this.ucText.FindControl("lbl") as Label;
+            //if (lbl != null)
+            //    lbl.Text = "測試 FindControl";
+
+
         }
 
         protected void btn_Click(object sender, EventArgs e)

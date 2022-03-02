@@ -67,15 +67,38 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Form7.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Page1.aspx" />
+    <Content Include="Page2.aspx" />
+    <Content Include="Page3.aspx" />
+    <Content Include="Page4.aspx" />
+    <Content Include="Page5.aspx" />
+    <Content Include="Page6.aspx" />
+    <Content Include="ucDynamicControls.ascx" />
     <Content Include="ucText.ascx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Form7.aspx.cs">
+      <DependentUpon>Form7.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Form7.aspx.designer.cs">
+      <DependentUpon>Form7.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Main.Master.cs">
+      <DependentUpon>Main.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Main.Master.designer.cs">
+      <DependentUpon>Main.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StatusEnum.cs" />
+    <Compile Include="Models\StudentInfo.cs" />
     <Compile Include="Page1.aspx.cs">
       <DependentUpon>Page1.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -83,7 +106,49 @@
     <Compile Include="Page1.aspx.designer.cs">
       <DependentUpon>Page1.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Page2.aspx.cs">
+      <DependentUpon>Page2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Page2.aspx.designer.cs">
+      <DependentUpon>Page2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Page3.aspx.cs">
+      <DependentUpon>Page3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Page3.aspx.designer.cs">
+      <DependentUpon>Page3.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Page4.aspx.cs">
+      <DependentUpon>Page4.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Page4.aspx.designer.cs">
+      <DependentUpon>Page4.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Page5.aspx.cs">
+      <DependentUpon>Page5.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Page5.aspx.designer.cs">
+      <DependentUpon>Page5.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Page6.aspx.cs">
+      <DependentUpon>Page6.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Page6.aspx.designer.cs">
+      <DependentUpon>Page6.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ucDynamicControls.ascx.cs">
+      <DependentUpon>ucDynamicControls.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ucDynamicControls.ascx.designer.cs">
+      <DependentUpon>ucDynamicControls.ascx</DependentUpon>
+    </Compile>
     <Compile Include="ucText.ascx.cs">
       <DependentUpon>ucText.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -93,6 +158,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Main.Master" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -103,7 +169,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

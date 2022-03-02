@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using TryTemplates.Models;
 
 namespace TryTemplates
 {
@@ -28,8 +29,14 @@ namespace TryTemplates
             return this.lbl.Text;
         }
 
+        protected void Page_Init(object sender, EventArgs e)
+        { 
+            Response.Write("UserControl.Page_Init <br/> ");
+
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
+            Response.Write("UserControl.Page_Load <br/> ");
 
         }
     }

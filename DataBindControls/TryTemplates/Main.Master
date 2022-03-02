@@ -1,0 +1,44 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Main.master.cs" Inherits="TryTemplates.Main" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <table border="1">
+                <tr>
+                    <td colspan="2">
+                        <img src="<%= this.LogoUrl %>" />
+                        這裡是頁首的內容
+                        <asp:Literal ID="ltlHeader" runat="server"></asp:Literal>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        項目一<br />
+                        項目二<br />
+                        項目三<br />
+                    </td>
+                    <td>
+                        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">這裡是頁尾的內容
+                        <asp:Literal ID="ltlFooter" runat="server"></asp:Literal>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+    </form>
+</body>
+</html>
