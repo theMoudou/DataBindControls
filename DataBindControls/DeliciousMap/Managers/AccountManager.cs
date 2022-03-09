@@ -60,6 +60,55 @@ namespace DeliciousMap.Managers
         }
 
         #region "增刪修查"
+        public List<MemberAccount> GetAccountList(string keyword)
+        {
+            string connStr = ConfigHelper.GetConnectionString();
+            string commandText =
+                @"  SELECT *
+                    FROM Accounts ";
+
+            if (!string.IsNullOrWhiteSpace(keyword))
+            {
+                commandText += " WHERE Account LIKE '%'+@keyword+'%'";
+            }
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connStr))
+                {
+                    using (SqlCommand command = new SqlCommand(commandText, conn))
+                    {
+                        if (!string.IsNullOrWhiteSpace(keyword))
+                        {
+                            command.Parameters.AddWithValue("@keyword", keyword);
+                        }
+
+                        conn.Open();
+                        SqlDataReader reader = command.ExecuteReader();
+                        List<MemberAccount> list = new List<MemberAccount>();
+
+                        while (reader.Read())
+                        {
+                            MemberAccount member = new MemberAccount()
+                            {
+                                ID = (Guid)reader["ID"],
+                                Account = reader["Account"] as string
+                            };
+
+                            list.Add(member);
+                        }
+
+                        return list;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.WriteLog("MapContentManager.GetMapList", ex);
+                throw;
+            }
+        }
+
         public MemberAccount GetAccount(string account)
         {
             string connStr = ConfigHelper.GetConnectionString();
@@ -142,7 +191,6 @@ namespace DeliciousMap.Managers
             }
         }
 
-
         public void CreateAccount(MemberAccount member)
         {
             // 1. 判斷資料庫是否有相同的 Account
@@ -180,7 +228,6 @@ namespace DeliciousMap.Managers
             }
         }
 
-
         public void UpdateAccount(MemberAccount member)
         {
             // 1. 判斷資料庫是否有相同的 Account
@@ -203,6 +250,47 @@ namespace DeliciousMap.Managers
                     {
                         command.Parameters.AddWithValue("@id", member.ID);
                         command.Parameters.AddWithValue("@pwd", member.Password);
+
+                        conn.Open();
+                        command.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.WriteLog("MapContentManager.GetMapList", ex);
+                throw;
+            }
+        }
+
+        public void DeleteAccounts(List<Guid> ids)
+        {
+            // 1. 判斷是否有傳入 id
+            if (ids == null || ids.Count == 0)
+                throw new Exception("需指定 id");
+
+            List<string> param = new List<string>();
+            for(var i = 0; i < ids.Count; i++)
+            {
+                param.Add("@id" + i);
+            }
+            string inSql = string.Join(", ", param);    // @id1, @id2, @id3, etc...
+
+            // 2. 刪除資料
+            string connStr = ConfigHelper.GetConnectionString();
+            string commandText =
+                $@" DELETE Accounts
+                    WHERE ID IN ({inSql}) ";
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connStr))
+                {
+                    using (SqlCommand command = new SqlCommand(commandText, conn))
+                    {
+                        for(var i = 0; i < ids.Count; i++)
+                        {
+                            command.Parameters.AddWithValue("@id" + i, ids[i]);
+                        }
 
                         conn.Open();
                         command.ExecuteNonQuery();
