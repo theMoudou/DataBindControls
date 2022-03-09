@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeliciousMap", "DeliciousMa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TryTemplates", "TryTemplates\TryTemplates.csproj", "{D6C45FFB-8FAA-449A-ABF8-7A8B2F87404A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TryWebAPI", "TryWebAPI\TryWebAPI.csproj", "{407534E5-1DB5-473D-B558-3F3B52D5EFBD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TryReadAPI", "TryReadAPI\TryReadAPI.csproj", "{F319CBD9-8AA2-431C-AC8C-9C5EEB2446D7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{D6C45FFB-8FAA-449A-ABF8-7A8B2F87404A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D6C45FFB-8FAA-449A-ABF8-7A8B2F87404A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D6C45FFB-8FAA-449A-ABF8-7A8B2F87404A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{407534E5-1DB5-473D-B558-3F3B52D5EFBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{407534E5-1DB5-473D-B558-3F3B52D5EFBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{407534E5-1DB5-473D-B558-3F3B52D5EFBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{407534E5-1DB5-473D-B558-3F3B52D5EFBD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F319CBD9-8AA2-431C-AC8C-9C5EEB2446D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F319CBD9-8AA2-431C-AC8C-9C5EEB2446D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F319CBD9-8AA2-431C-AC8C-9C5EEB2446D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F319CBD9-8AA2-431C-AC8C-9C5EEB2446D7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

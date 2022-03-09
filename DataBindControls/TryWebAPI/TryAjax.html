@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <input type="text" id="txt" value="Moudou" />
+    <input type="button" value="讀取伺服器" onclick="send_Click()" /><br/>
+    <div id="result"> - </div>
+</body>
+<script>
+    function send_Click() {
+        var self = this;
+
+        function reqListener() {
+            var array = JSON.parse(this.responseText);
+
+            document.getElementById("result").innerHTML = "";
+            for (var item of array) {
+                var outputText = `Name: ${item.Name}, Age: ${item.Age} <br/>`;
+                document.getElementById("result").innerHTML += outputText;
+            }
+        }
+
+        function transferFailed() {
+            alert("錯誤發生");
+        }
+
+        //var queryString = "?q=" + GetName();
+        var queryString = "";
+
+        var oReq = new XMLHttpRequest();
+        oReq.addEventListener("load", reqListener);
+        oReq.addEventListener("error", transferFailed);
+        //oReq.open("GET", "http://localhost:8081/SampleData.json");
+        //oReq.open("GET", "SampleData.json");
+        oReq.open("GET", "FirstAPI.ashx" + queryString);
+        oReq.send();
+
+        document.getElementById("result").innerHTML = " - ";
+    }
+
+    function GetName() {
+        var val = document.getElementById("txt").value;
+        return val;
+    }
+</script>
+</html>

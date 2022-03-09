@@ -11,7 +11,14 @@ namespace DeliciousMap.Models
         public string Title { get; set; }
         public string Body { get; set; }
         public DateTime CreateDate { get; set; }
-        public float? Longitude { get; set; }
-        public float? Latitude { get; set; }
+        public double? Longitude { get; set; }
+        public double? Latitude { get; set; }
+
+        public string Content
+        {
+            get { return this.Body; }
+            set { this.Body = value; }
+        }
+
     }
 }

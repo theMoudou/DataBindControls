@@ -7,12 +7,12 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{05B2B695-050F-4035-85E8-64595F330879}</ProjectGuid>
+    <ProjectGuid>{407534E5-1DB5-473D-B558-3F3B52D5EFBD}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DeliciousMap</RootNamespace>
-    <AssemblyName>DeliciousMap</AssemblyName>
+    <RootNamespace>TryWebAPI</RootNamespace>
+    <AssemblyName>TryWebAPI</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
@@ -70,59 +70,37 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="BackAdmin\index.aspx" />
-    <Content Include="BackAdmin\MapContentEditor.aspx" />
     <Content Include="Global.asax" />
-    <Content Include="Login.aspx" />
-    <Content Include="MapContentList.aspx" />
+    <Content Include="Index.aspx" />
+    <Content Include="TryAjax.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="API\FoodAPIHandler.ashx.cs">
+    <Compile Include="FirstAPI.ashx.cs">
+      <DependentUpon>FirstAPI.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="FoodAPIHandler.ashx.cs">
       <DependentUpon>FoodAPIHandler.ashx</DependentUpon>
-    </Compile>
-    <Compile Include="BackAdmin\index.aspx.cs">
-      <DependentUpon>index.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="BackAdmin\index.aspx.designer.cs">
-      <DependentUpon>index.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="BackAdmin\MapContentEditor.aspx.cs">
-      <DependentUpon>MapContentEditor.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="BackAdmin\MapContentEditor.aspx.designer.cs">
-      <DependentUpon>MapContentEditor.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\ConfigHelper.cs" />
-    <Compile Include="Helpers\Logger.cs" />
-    <Compile Include="Login.aspx.cs">
-      <DependentUpon>Login.aspx</DependentUpon>
+    <Compile Include="Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Login.aspx.designer.cs">
-      <DependentUpon>Login.aspx</DependentUpon>
+    <Compile Include="Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Managers\AccountManager.cs" />
-    <Compile Include="Managers\MapContentManager.cs" />
-    <Compile Include="MapContentList.aspx.cs">
-      <DependentUpon>MapContentList.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="MapContentList.aspx.designer.cs">
-      <DependentUpon>MapContentList.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Account.cs" />
-    <Compile Include="Models\MapContent.cs" />
+    <Compile Include="Managers\StudentManager.cs" />
+    <Compile Include="Models\StudentInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="API\FoodAPIHandler.ashx" />
+    <Content Include="FirstAPI.ashx" />
+    <Content Include="FoodAPIHandler.ashx" />
     <None Include="packages.config" />
+    <Content Include="SampleData.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -146,9 +124,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>57005</DevelopmentServerPort>
+          <DevelopmentServerPort>53177</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:57005/</IISUrl>
+          <IISUrl>http://localhost:53177/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
