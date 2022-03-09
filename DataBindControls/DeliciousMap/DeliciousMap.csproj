@@ -72,6 +72,8 @@
   <ItemGroup>
     <Content Include="BackAdmin\index.aspx" />
     <Content Include="BackAdmin\MapContentEditor.aspx" />
+    <Content Include="BackAdmin\MemberDetail.aspx" />
+    <Content Include="BackAdmin\MemberList.aspx" />
     <Content Include="FileUpload.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Login.aspx" />
@@ -81,6 +83,13 @@
   <ItemGroup>
     <Compile Include="API\FoodAPIHandler.ashx.cs">
       <DependentUpon>FoodAPIHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="BackAdmin\Admin.Master.cs">
+      <DependentUpon>Admin.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BackAdmin\Admin.Master.designer.cs">
+      <DependentUpon>Admin.Master</DependentUpon>
     </Compile>
     <Compile Include="BackAdmin\index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
@@ -95,6 +104,20 @@
     </Compile>
     <Compile Include="BackAdmin\MapContentEditor.aspx.designer.cs">
       <DependentUpon>MapContentEditor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BackAdmin\MemberDetail.aspx.cs">
+      <DependentUpon>MemberDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BackAdmin\MemberDetail.aspx.designer.cs">
+      <DependentUpon>MemberDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BackAdmin\MemberList.aspx.cs">
+      <DependentUpon>MemberList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BackAdmin\MemberList.aspx.designer.cs">
+      <DependentUpon>MemberList.aspx</DependentUpon>
     </Compile>
     <Compile Include="FileUpload.aspx.cs">
       <DependentUpon>FileUpload.aspx</DependentUpon>
@@ -131,6 +154,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="API\FoodAPIHandler.ashx" />
+    <Content Include="BackAdmin\Admin.Master" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
