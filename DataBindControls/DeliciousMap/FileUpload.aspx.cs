@@ -72,9 +72,13 @@ namespace DeliciousMap
             //    (Guid.NewGuid()).ToString() +
             //    System.IO.Path.GetExtension(fileName);
 
+            System.Threading.Thread.Sleep(3);
+            Random random = new Random((int)DateTime.Now.Ticks);
+
             // 使用當下時間法
             string newFileName =
-                DateTime.Now.ToString("yyyyMMddHHmmssFFFFFF") +
+                DateTime.Now.ToString("yyyyMMddHHmmssFFFFFF") + "_" +
+                random.Next(10000).ToString("0000") +
                 System.IO.Path.GetExtension(fileName);
 
             return newFileName;

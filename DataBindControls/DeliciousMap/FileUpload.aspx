@@ -11,7 +11,7 @@
     <form id="form1" runat="server">
         請輸入存檔路徑 <asp:TextBox runat="server"></asp:TextBox>
         <br />
-        <asp:FileUpload ID="FileUpload1" runat="server" AllowMultiple="True" /><asp:Label runat="server" ID="lblMsg" ForeColor="Red" />
+        <asp:FileUpload ID="FileUpload1" runat="server" /><asp:Label runat="server" ID="lblMsg" ForeColor="Red" />
         <br />
         <asp:FileUpload ID="FileUpload2" runat="server" /><asp:Label runat="server" ID="lblMsg2" ForeColor="Red" />
         <br />
