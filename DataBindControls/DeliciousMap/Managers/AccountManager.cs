@@ -30,13 +30,11 @@ namespace DeliciousMap.Managers
             bool result = (isAccountRight && isPasswordRight);
 
             // 帳密正確：把值寫入 Session
+            // 為避免任何漏洞導致 session 流出，先把密碼清除
             if (result)
             {
-                HttpContext.Current.Session["MemberAccount"] = new MemberAccount()
-                {
-                    Account = account,
-                    Password = password
-                };
+                member.Password = null;
+                HttpContext.Current.Session["MemberAccount"] = member;
             }
 
             return result;

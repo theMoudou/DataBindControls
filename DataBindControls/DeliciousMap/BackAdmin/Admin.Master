@@ -19,7 +19,8 @@
             </tr>
             <tr>
                 <td width="300px">
-                    左側選單
+                    <a href="MapList.aspx">美食地圖管理</a><br />
+                    <a href="MemberList.aspx">會員管理</a>
                 </td>
                 <td>
                     內容區

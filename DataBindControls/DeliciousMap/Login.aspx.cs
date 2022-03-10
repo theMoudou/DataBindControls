@@ -15,7 +15,7 @@ namespace DeliciousMap
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(this._mgr.IsLogined())
+            if (this._mgr.IsLogined())
             {
                 this.plcUserInfo.Visible = true;
                 this.plcLogin.Visible = false;

@@ -1,4 +1,5 @@
 ﻿using DeliciousMap.Managers;
+using DeliciousMap.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -53,8 +54,40 @@ namespace DeliciousMap.BackAdmin
         }
         protected void btnDelete_Click(object sender, EventArgs e)
         {
+            List<Guid> ids = new List<Guid>();
+            foreach (RepeaterItem item in this.rptList.Items)
+            {
+                CheckBox ckb = item.FindControl("ckbDel") as CheckBox;
+                HiddenField hf = item.FindControl("hfID") as HiddenField;
 
+                if (ckb != null && hf != null && ckb.Checked)
+                {
+                    Guid id;
+                    if (Guid.TryParse(hf.Value, out id))
+                    {
+                        ids.Add(id);
+                    }
+                }
+            }
+
+            if (ids.Count > 0)
+            {
+                List<MapContentModel> pickedList = this._mgr.GetMapList(ids);
+                foreach(MapContentModel model in pickedList)
+                {
+                    this.DeleteImage(model.CoverImage);
+                }
+
+                this._mgr.DeleteMapContent(ids);
+            }
         }
 
+        private void DeleteImage(string imagePath)
+        {
+            string filePath = System.Web.Hosting.HostingEnvironment.MapPath("~/" + imagePath);
+
+            if (System.IO.File.Exists(filePath))
+                System.IO.File.Delete(filePath);
+        }
     }
 }

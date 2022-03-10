@@ -89,6 +89,58 @@ namespace DeliciousMap.Managers
             }
         }
 
+        public List<MapContentModel> GetMapList(List<Guid> ids)
+        {
+            if (ids == null || ids.Count == 0)
+                return new List<MapContentModel>();
+
+            List<string> idTextList = new List<string>();
+            for (int i = 0; i < ids.Count; i++)
+            {
+                idTextList.Add("@id" + i);
+            }
+            string whereCondition = string.Join(", ", idTextList);
+
+
+            string connStr = ConfigHelper.GetConnectionString();
+            string commandText =
+                $@" SELECT *
+                    FROM MapContents 
+                    WHERE ID IN ({whereCondition}) ";
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connStr))
+                {
+                    using (SqlCommand command = new SqlCommand(commandText, conn))
+                    {
+                        for (int i = 0; i < ids.Count; i++)
+                        {
+                            command.Parameters.AddWithValue("@id" + i, ids[i]);
+                        }
+
+
+                        conn.Open();
+                        SqlDataReader reader = command.ExecuteReader();
+
+                        List<MapContentModel> retList = new List<MapContentModel>();    // 將資料庫內容轉為自定義型別清單
+                        while (reader.Read())
+                        {
+                            MapContentModel info = this.BuildMapContentModel(reader);
+                            retList.Add(info);
+                        }
+
+                        return retList;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.WriteLog("MapContentManager.GetMapList", ex);
+                throw;
+            }
+        }
+
+
         private MapContentModel BuildMapContentModel(SqlDataReader reader)
         {
             var model = new MapContentModel()
@@ -133,8 +185,6 @@ namespace DeliciousMap.Managers
                     {
                         model.ID = Guid.NewGuid();
 
-                        conn.Open();
-
                         command.Parameters.AddWithValue("@ID", model.ID);
                         command.Parameters.AddWithValue("@Title", model.Title);
                         command.Parameters.AddWithValue("@Body", model.Body);
@@ -142,8 +192,9 @@ namespace DeliciousMap.Managers
                         command.Parameters.AddWithValue("@Latitude", model.Longitude);
                         command.Parameters.AddWithValue("@CoverImage", model.CoverImage);
                         command.Parameters.AddWithValue("@IsEnable", model.IsEnable);
-                        command.Parameters.AddWithValue("@CreateDate", model.CreateDate);
-                        command.Parameters.AddWithValue("@CreateUser", model.CreateUser);
+                        command.Parameters.AddWithValue("@CreateDate", DateTime.Now);
+                        command.Parameters.AddWithValue("@CreateUser", cUserID);
+                        conn.Open();
                         command.ExecuteNonQuery();
                     }
                 }
@@ -158,7 +209,43 @@ namespace DeliciousMap.Managers
         public void UpdateMapContent(MapContentModel model)
         { }
 
-        public void DeleteMapContent(MapContentModel model)
-        { }
+        public void DeleteMapContent(List<Guid> idList)
+        {
+            if (idList == null || idList.Count == 0)
+                throw new Exception("id List is required.");
+
+            List<string> idTextList = new List<string>();
+            for (int i = 0; i < idList.Count; i++)
+            {
+                idTextList.Add("@id" + i);
+            }
+            string whereCondition = string.Join(", ", idTextList);
+
+            string connStr = ConfigHelper.GetConnectionString();
+            string commandText =
+               $@"  DELETE MapContents
+                    WHERE ID IN ({whereCondition}); ";
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connStr))
+                {
+                    using (SqlCommand command = new SqlCommand(commandText, conn))
+                    {
+                        for (int i = 0; i < idList.Count; i++)
+                        {
+                            command.Parameters.AddWithValue("@id" + i, idList[i]);
+                        }
+         
+                        conn.Open();
+                        command.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.WriteLog("MapContentManager.DeleteMapContent", ex);
+                throw;
+            }
+        }
     }
 }

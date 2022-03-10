@@ -14,6 +14,7 @@
             Password:
             <asp:TextBox ID="txtPassword" runat="server" TextMode="Password"></asp:TextBox><br />
             <asp:Button ID="btnLogin" runat="server" Text="登入" OnClick="btnLogin_Click" /><br />
+
             <asp:Literal ID="ltlMessage" runat="server"></asp:Literal>
         </asp:PlaceHolder>
 
