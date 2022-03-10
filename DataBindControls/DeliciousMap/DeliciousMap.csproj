@@ -72,8 +72,10 @@
   <ItemGroup>
     <Content Include="BackAdmin\index.aspx" />
     <Content Include="BackAdmin\MapContentEditor.aspx" />
+    <Content Include="BackAdmin\MapList.aspx" />
     <Content Include="BackAdmin\MemberDetail.aspx" />
     <Content Include="BackAdmin\MemberList.aspx" />
+    <Content Include="BackAdmin\Temp.aspx" />
     <Content Include="FileUpload.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Login.aspx" />
@@ -105,6 +107,13 @@
     <Compile Include="BackAdmin\MapContentEditor.aspx.designer.cs">
       <DependentUpon>MapContentEditor.aspx</DependentUpon>
     </Compile>
+    <Compile Include="BackAdmin\MapList.aspx.cs">
+      <DependentUpon>MapList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BackAdmin\MapList.aspx.designer.cs">
+      <DependentUpon>MapList.aspx</DependentUpon>
+    </Compile>
     <Compile Include="BackAdmin\MemberDetail.aspx.cs">
       <DependentUpon>MemberDetail.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -118,6 +127,13 @@
     </Compile>
     <Compile Include="BackAdmin\MemberList.aspx.designer.cs">
       <DependentUpon>MemberList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BackAdmin\Temp.aspx.cs">
+      <DependentUpon>Temp.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BackAdmin\Temp.aspx.designer.cs">
+      <DependentUpon>Temp.aspx</DependentUpon>
     </Compile>
     <Compile Include="FileUpload.aspx.cs">
       <DependentUpon>FileUpload.aspx</DependentUpon>
@@ -149,7 +165,7 @@
       <DependentUpon>MapContentList.aspx</DependentUpon>
     </Compile>
     <Compile Include="Models\Account.cs" />
-    <Compile Include="Models\MapContent.cs" />
+    <Compile Include="Models\MapContentModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

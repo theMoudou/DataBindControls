@@ -32,19 +32,19 @@ namespace DeliciousMap.BackAdmin
             float latitude;
             float longitude;
 
-            MapContent model = new MapContent();
+            MapContentModel model = new MapContentModel();
             model.Title = name;
             model.Body = body;
 
             if (float.TryParse(latitudeText, out latitude))
                 model.Latitude = latitude;
             else
-                model.Latitude = null;
+                model.Latitude = 0;
 
             if (float.TryParse(longitudeText, out longitude))
                 model.Longitude = longitude;
             else
-                model.Longitude = null;
+                model.Longitude = 0;
 
             _mgr.CreateMapContent(model);
             this.ltlMessage.Text = "儲存成功";

@@ -16,7 +16,7 @@ namespace DeliciousMap
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            List<MapContent> list = this._mgr.GetMapList();
+            List<MapContentModel> list = this._mgr.GetMapList();
 
             if (list.Count == 0)
             {

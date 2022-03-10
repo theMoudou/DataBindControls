@@ -10,8 +10,7 @@ namespace DeliciousMap.Managers
 {
     public class MapContentManager
     {
-
-        public List<MapContent> GetMapList()
+        public List<MapContentModel> GetMapList()
         {
             string connStr = ConfigHelper.GetConnectionString();
             string commandText = 
@@ -27,18 +26,10 @@ namespace DeliciousMap.Managers
                         conn.Open();
                         SqlDataReader reader = command.ExecuteReader();
 
-                        List<MapContent> retList = new List<MapContent>();    // 將資料庫內容轉為自定義型別清單
+                        List<MapContentModel> retList = new List<MapContentModel>();    // 將資料庫內容轉為自定義型別清單
                         while (reader.Read())
                         {
-                            MapContent info = new MapContent()
-                            {
-                                ID = (Guid)reader["ID"],
-                                Title = reader["Title"] as string,
-                                Body = reader["Body"] as string,
-                                CreateDate = (DateTime)reader["CreateDate"],
-                                Longitude = reader["Longitude"] as float?,
-                                Latitude = reader["Latitude"] as float?,
-                            };
+                            MapContentModel info = this.BuildMapContentModel(reader);
                             retList.Add(info);
                         }
 
@@ -53,12 +44,79 @@ namespace DeliciousMap.Managers
             }
         }
 
-        public MapContent GetMap(Guid id)
+        public List<MapContentModel> GetAdminMapList(string keyword)
+        {
+            string whereCondition = string.Empty;
+            if (!string.IsNullOrWhiteSpace(keyword))
+                whereCondition = " WHERE Title LIKE '%'+@keyword+'%' ";
+
+            string connStr = ConfigHelper.GetConnectionString();
+            string commandText =
+                $@" SELECT *
+                    FROM MapContents 
+                    {whereCondition}
+                    ORDER BY CreateDate DESC ";
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connStr))
+                {
+                    using (SqlCommand command = new SqlCommand(commandText, conn))
+                    {
+                        if (!string.IsNullOrWhiteSpace(keyword))
+                        {
+                            command.Parameters.AddWithValue("@keyword", keyword);
+                        }
+
+                        conn.Open();
+                        SqlDataReader reader = command.ExecuteReader();
+
+                        List<MapContentModel> retList = new List<MapContentModel>();    // 將資料庫內容轉為自定義型別清單
+                        while (reader.Read())
+                        {
+                            MapContentModel info = this.BuildMapContentModel(reader);
+                            retList.Add(info);
+                        }
+
+                        return retList;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.WriteLog("MapContentManager.GetAdminMapList", ex);
+                throw;
+            }
+        }
+
+        private MapContentModel BuildMapContentModel(SqlDataReader reader)
+        {
+            var model = new MapContentModel()
+            {
+                ID = (Guid)reader["ID"],
+                Title = reader["Title"] as string,
+                Body = reader["Body"] as string,
+                CoverImage = reader["CoverImage"] as string,
+                IsEnable = (bool)reader["IsEnable"],
+                Longitude = (double)reader["Longitude"],
+                Latitude = (double)reader["Latitude"],
+
+                CreateDate = (DateTime)reader["CreateDate"],
+                CreateUser = (Guid)reader["CreateUser"],
+                UpdateDate = reader["UpdateDate"] as DateTime?,
+                UpdateUser = reader["UpdateUser"] as Guid?,
+                DeleteDate = reader["DeleteDate"] as DateTime?,
+                DeleteUser = reader["DeleteUser"] as Guid?,
+            };
+
+            return model;
+        }
+
+        public MapContentModel GetMap(Guid id)
         {
             return null;
         }
 
-        public void CreateMapContent(MapContent model)
+        public void CreateMapContent(MapContentModel model)
         {
             string connStr = ConfigHelper.GetConnectionString();
             string commandText =
@@ -89,10 +147,10 @@ namespace DeliciousMap.Managers
             }
         }
 
-        public void UpdateMapContent(MapContent model)
+        public void UpdateMapContent(MapContentModel model)
         { }
 
-        public void DeleteMapContent(MapContent model)
+        public void DeleteMapContent(MapContentModel model)
         { }
     }
 }
