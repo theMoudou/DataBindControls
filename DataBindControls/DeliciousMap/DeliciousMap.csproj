@@ -71,7 +71,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="BackAdmin\index.aspx" />
-    <Content Include="BackAdmin\MapContentEditor.aspx" />
+    <Content Include="BackAdmin\MapDetail.aspx" />
     <Content Include="BackAdmin\MapList.aspx" />
     <Content Include="BackAdmin\MemberDetail.aspx" />
     <Content Include="BackAdmin\MemberList.aspx" />
@@ -100,12 +100,12 @@
     <Compile Include="BackAdmin\index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
     </Compile>
-    <Compile Include="BackAdmin\MapContentEditor.aspx.cs">
-      <DependentUpon>MapContentEditor.aspx</DependentUpon>
+    <Compile Include="BackAdmin\MapDetail.aspx.cs">
+      <DependentUpon>MapDetail.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="BackAdmin\MapContentEditor.aspx.designer.cs">
-      <DependentUpon>MapContentEditor.aspx</DependentUpon>
+    <Compile Include="BackAdmin\MapDetail.aspx.designer.cs">
+      <DependentUpon>MapDetail.aspx</DependentUpon>
     </Compile>
     <Compile Include="BackAdmin\MapList.aspx.cs">
       <DependentUpon>MapList.aspx</DependentUpon>

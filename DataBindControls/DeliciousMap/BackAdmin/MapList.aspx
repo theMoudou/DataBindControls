@@ -7,7 +7,7 @@
 
     <asp:Button ID="btnDelete" runat="server" Text="刪除" OnClick="btnDelete_Click" />
     <asp:Button ID="btnCreate" runat="server" Text="新增" OnClick="btnCreate_Click" /><br />
-       
+
     <asp:TextBox runat="server" ID="txtSearch"></asp:TextBox>
     <asp:Button runat="server" ID="btnSearch" Text="搜尋" OnClick="btnSearch_Click" /> <br />       
 

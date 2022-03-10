@@ -16,6 +16,7 @@ namespace DeliciousMap.Managers
             string commandText = 
                 @"  SELECT *
                     FROM MapContents 
+                    WHERE IsEnable = 'true'
                     ORDER BY CreateDate DESC ";
             try
             {
@@ -116,26 +117,33 @@ namespace DeliciousMap.Managers
             return null;
         }
 
-        public void CreateMapContent(MapContentModel model)
+        public void CreateMapContent(MapContentModel model, Guid cUserID)
         {
             string connStr = ConfigHelper.GetConnectionString();
             string commandText =
                @"   INSERT INTO MapContents
-                        (Title, Body, Longitude, Latitude)
+                        (ID, Title, Body, Longitude, Latitude, CoverImage, IsEnable, CreateDate, CreateUser)
                     VALUES
-                        (@Title, @Body, @Longitude, @Latitude) ";
+                        (@ID, @Title, @Body, @Longitude, @Latitude, @CoverImage, @IsEnable, @CreateDate, @CreateUser) ";
             try
             {
                 using (SqlConnection conn = new SqlConnection(connStr))
                 {
                     using (SqlCommand command = new SqlCommand(commandText, conn))
                     {
+                        model.ID = Guid.NewGuid();
+
                         conn.Open();
 
+                        command.Parameters.AddWithValue("@ID", model.ID);
                         command.Parameters.AddWithValue("@Title", model.Title);
                         command.Parameters.AddWithValue("@Body", model.Body);
                         command.Parameters.AddWithValue("@Longitude", model.Latitude);
                         command.Parameters.AddWithValue("@Latitude", model.Longitude);
+                        command.Parameters.AddWithValue("@CoverImage", model.CoverImage);
+                        command.Parameters.AddWithValue("@IsEnable", model.IsEnable);
+                        command.Parameters.AddWithValue("@CreateDate", model.CreateDate);
+                        command.Parameters.AddWithValue("@CreateUser", model.CreateUser);
                         command.ExecuteNonQuery();
                     }
                 }
