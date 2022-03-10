@@ -79,7 +79,7 @@
     <Content Include="FileUpload.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Login.aspx" />
-    <Content Include="MapContentList.aspx" />
+    <Content Include="MapList.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -155,14 +155,21 @@
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Managers\AccountManager.cs" />
-    <Compile Include="Managers\MapContentManager.cs" />
-    <Compile Include="MapContentList.aspx.cs">
-      <DependentUpon>MapContentList.aspx</DependentUpon>
+    <Compile Include="Main.Master.cs">
+      <DependentUpon>Main.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="MapContentList.aspx.designer.cs">
-      <DependentUpon>MapContentList.aspx</DependentUpon>
+    <Compile Include="Main.Master.designer.cs">
+      <DependentUpon>Main.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Managers\AccountManager.cs" />
+    <Compile Include="Managers\MapContentManager.cs" />
+    <Compile Include="MapList.aspx.cs">
+      <DependentUpon>MapList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MapList.aspx.designer.cs">
+      <DependentUpon>MapList.aspx</DependentUpon>
     </Compile>
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\MapContentModel.cs" />
@@ -171,6 +178,7 @@
   <ItemGroup>
     <Content Include="API\FoodAPIHandler.ashx" />
     <Content Include="BackAdmin\Admin.Master" />
+    <Content Include="Main.Master" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

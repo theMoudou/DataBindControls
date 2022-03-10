@@ -10,14 +10,32 @@ namespace DeliciousMap.Managers
 {
     public class MapContentManager
     {
-        public List<MapContentModel> GetMapList()
+        public List<MapContentModel> GetMapList(int pageSize, int pageIndex, out int totalRows)
         {
+            int skip = pageSize * (pageIndex - 1);  // 計算跳頁數
+            if (skip < 0)
+                skip = 0;
+
             string connStr = ConfigHelper.GetConnectionString();
-            string commandText = 
-                @"  SELECT *
+            string commandText =
+                $@" SELECT TOP {pageSize} *
                     FROM MapContents 
-                    WHERE IsEnable = 'true'
+                    WHERE 
+                        IsEnable = 'true' AND
+                        ID NOT IN 
+                        (
+                            SELECT TOP {skip} ID
+                            FROM MapContents 
+                            WHERE 
+                                IsEnable = 'true' 
+                            ORDER BY CreateDate DESC
+                        )
                     ORDER BY CreateDate DESC ";
+            string commandCountText =
+                @"  SELECT COUNT(ID) 
+                    FROM MapContents
+                    WHERE IsEnable = 'true' ";
+
             try
             {
                 using (SqlConnection conn = new SqlConnection(connStr))
@@ -33,6 +51,11 @@ namespace DeliciousMap.Managers
                             MapContentModel info = this.BuildMapContentModel(reader);
                             retList.Add(info);
                         }
+                        reader.Close();
+
+                        // 取得總筆數
+                        command.CommandText = commandCountText;
+                        totalRows = (int)command.ExecuteScalar();
 
                         return retList;
                     }
