@@ -30,7 +30,7 @@ namespace DeliciousMap
 
                 int totalRows = 0;
                 var list = this._mgr.GetMapList(keyword, _pageSize, pageIndex, out totalRows);
-                this.ProcessPager(pageIndex, totalRows);
+                this.ProcessPager(keyword, pageIndex, totalRows);
 
                 if (list.Count == 0)
                 {
@@ -49,7 +49,7 @@ namespace DeliciousMap
         }
 
 
-        private void ProcessPager(int pageIndex, int totalRows)
+        private void ProcessPager(string keyword, int pageIndex, int totalRows)
         {
             int pageCount = (totalRows / _pageSize);
             if ((totalRows % _pageSize) > 0)
@@ -57,18 +57,23 @@ namespace DeliciousMap
 
             // LocalPath :   MapList.aspx
             string url = Request.Url.LocalPath;
+            string paramKeyword = string.Empty;
+            if (!string.IsNullOrWhiteSpace(keyword))
+                paramKeyword = "&keyword=" + keyword;
 
-            this.aLinkFirst.HRef = url + "?Index=1";
-            this.aLinkPrev.HRef = url + "?Index=" + (pageIndex - 1);
-            this.aLinkNext.HRef = url + "?Index=" + (pageIndex + 1);
-            this.aLinkLast.HRef = url + "?Index=" + pageCount;
 
-            this.aLinkPage1.HRef = url + "?Index=" + (pageIndex - 2);
+
+            this.aLinkFirst.HRef = url + "?Index=1" + paramKeyword;
+            this.aLinkPrev.HRef = url + "?Index=" + (pageIndex - 1)+ paramKeyword;
+            this.aLinkNext.HRef = url + "?Index=" + (pageIndex + 1) + paramKeyword;
+            this.aLinkLast.HRef = url + "?Index=" + pageCount + paramKeyword;
+
+            this.aLinkPage1.HRef = url + "?Index=" + (pageIndex - 2) + paramKeyword;
             this.aLinkPage1.InnerText = (pageIndex - 2).ToString();
             if (pageIndex <= 2)
                 this.aLinkPage1.Visible = false;
 
-            this.aLinkPage2.HRef = url + "?Index=" + (pageIndex - 1);
+            this.aLinkPage2.HRef = url + "?Index=" + (pageIndex - 1) + paramKeyword;
             this.aLinkPage2.InnerText = (pageIndex - 1).ToString();
             if (pageIndex <= 1)
                 this.aLinkPage2.Visible = false;
@@ -76,12 +81,12 @@ namespace DeliciousMap
             this.aLinkPage3.HRef = "";
             this.aLinkPage3.InnerText = pageIndex.ToString();
 
-            this.aLinkPage4.HRef = url + "?Index=" + (pageIndex + 1);
+            this.aLinkPage4.HRef = url + "?Index=" + (pageIndex + 1) + paramKeyword;
             this.aLinkPage4.InnerText = (pageIndex + 1).ToString();
             if ((pageIndex + 1) > pageCount)
                 this.aLinkPage4.Visible = false;
 
-            this.aLinkPage5.HRef = url + "?Index=" + (pageIndex + 2);
+            this.aLinkPage5.HRef = url + "?Index=" + (pageIndex + 2) + paramKeyword;
             this.aLinkPage5.InnerText = (pageIndex + 2).ToString();
             if ((pageIndex + 2) > pageCount)
                 this.aLinkPage5.Visible = false;
