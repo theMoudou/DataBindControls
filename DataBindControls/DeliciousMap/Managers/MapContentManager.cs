@@ -221,7 +221,7 @@ namespace DeliciousMap.Managers
                         conn.Open();
                         SqlDataReader reader = command.ExecuteReader();
 
-                        MapContentModel model = new  MapContentModel();
+                        MapContentModel model = new MapContentModel();
                         if (reader.Read())
                         {
                             model = this.BuildMapContentModel(reader);
@@ -304,7 +304,7 @@ namespace DeliciousMap.Managers
                         {
                             command.Parameters.AddWithValue("@id" + i, idList[i]);
                         }
-         
+
                         conn.Open();
                         command.ExecuteNonQuery();
                     }

@@ -101,6 +101,7 @@
     <Content Include="FileUpload.aspx" />
     <Content Include="Global.asax" />
     <Content Include="JavaScript\jquery-3.6.0.js" />
+    <Content Include="JavaScript\jquery.min.js" />
     <Content Include="JavaScript\jquery-3.6.0.min.js" />
     <Content Include="JavaScript\Modules\MapList.js" />
     <Content Include="Login.aspx" />

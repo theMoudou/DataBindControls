@@ -13,12 +13,8 @@
             border: 1px solid black;
         }
 
-            .SearchPanel > label {
-                font-size: large;
-            }
-
-        #txtKeyword {
-            color: red;
+        .SearchPanel > label {
+            font-size: large;
         }
     </style>
 </asp:Content>
@@ -32,7 +28,7 @@
         <asp:TextBox runat="server" ID="txtKeyword"></asp:TextBox>
         
         <br />
-        <asp:Button runat="server" ID="btnSearch" Text="Search" OnClick="btnSearch_Click" OnClientClick="return checkInput()" /><br />
+        <asp:Button runat="server" ID="btnSearch" Text="Search" OnClick="btnSearch_Click" /><br />
     </div>
 
     <asp:Repeater ID="rptList" runat="server">
@@ -77,7 +73,8 @@
 
     <script>
         var initObj = {
-            btnSearchID: "<%= this.txtKeyword.ClientID %>"
+            txtSearchID: "<%= this.txtKeyword.ClientID %>",
+            btnSearchID: "<%= this.btnSearch.ClientID %>"
         };
     </script>
     <script src="JavaScript/Modules/MapList.js"></script>
