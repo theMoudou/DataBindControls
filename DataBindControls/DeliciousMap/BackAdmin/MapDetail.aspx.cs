@@ -14,7 +14,17 @@ namespace DeliciousMap.BackAdmin
     public partial class MapDetail : System.Web.UI.Page
     {
         private bool _isEditMode = false;
+        private static UserLevelEnum[] _pageLevel = { UserLevelEnum.Admin, UserLevelEnum.Super };
         private MapContentManager _mgr = new MapContentManager();
+        private AccountManager _accMgr = new AccountManager();
+
+        protected void Page_Init(object sender, EventArgs e)
+        {
+            if (!_pageLevel.Contains(this._accMgr.GetCurrentUser().UserLevel))
+            {
+                this.Response.Redirect("index.aspx");
+            }
+        }
 
         protected void Page_Load(object sender, EventArgs e)
         {

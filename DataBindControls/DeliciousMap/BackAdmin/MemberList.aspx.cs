@@ -12,6 +12,15 @@ namespace DeliciousMap.BackAdmin
     public partial class MemberList : System.Web.UI.Page
     {
         private AccountManager _mgr = new AccountManager();
+        private static UserLevelEnum[] _pageLevel = { UserLevelEnum.Super };
+
+        protected void Page_Init(object sender, EventArgs e)
+        {
+            if (!_pageLevel.Contains(this._mgr.GetCurrentUser().UserLevel))
+            {
+                this.Response.Redirect("index.aspx");
+            }
+        }
 
         protected void Page_Load(object sender, EventArgs e)
         {
