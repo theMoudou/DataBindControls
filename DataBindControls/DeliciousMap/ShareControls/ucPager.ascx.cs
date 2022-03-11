@@ -19,6 +19,9 @@ namespace DeliciousMap.ShareControls
         /// <summary> 共幾筆 </summary>
         public int TotalRows { get; set; } = 0;
 
+        /// <summary> 分頁用的 QueryString Key </summary>
+        public string IndexName { get; set; } = "Index";
+
         private string _url = null;
 
         /// <summary> 要跳至哪個 URL (預設為本頁) </summary>
@@ -57,19 +60,22 @@ namespace DeliciousMap.ShareControls
                 pageCount += 1;
 
             string url = this.Url;
-            string qsText = this.BuildQueryString(collection);
 
-            this.aLinkFirst.HRef = url + "?Index=1" + qsText;
-            this.aLinkPrev.HRef = url + "?Index=" + (this.PageIndex - 1) + qsText;
-            this.aLinkNext.HRef = url + "?Index=" + (this.PageIndex + 1) + qsText;
-            this.aLinkLast.HRef = url + "?Index=" + pageCount + qsText;
 
-            this.aLinkPage1.HRef = url + "?Index=" + (this.PageIndex - 2) + qsText;
+            // 第一頁，上一頁，下一頁，最未頁
+            int prevIndex = ((this.PageIndex - 1) > 0) ? this.PageIndex - 1 : 1;
+            int nextIndex = ((this.PageIndex + 1) < pageCount) ? this.PageIndex + 1 : pageCount;
+            this.aLinkFirst.HRef = url + "?" + this.BuildQueryString(collection, 1);
+            this.aLinkPrev.HRef = url + "?" + this.BuildQueryString(collection, prevIndex);
+            this.aLinkNext.HRef = url + "?" + this.BuildQueryString(collection, nextIndex);
+            this.aLinkLast.HRef = url + "?" + this.BuildQueryString(collection, pageCount);
+
+            this.aLinkPage1.HRef = url + "?" + this.BuildQueryString(collection, this.PageIndex - 2);
             this.aLinkPage1.InnerText = (this.PageIndex - 2).ToString();
             if (this.PageIndex <= 2)
                 this.aLinkPage1.Visible = false;
 
-            this.aLinkPage2.HRef = url + "?Index=" + (this.PageIndex - 1) + qsText;
+            this.aLinkPage2.HRef = url + "?" + this.BuildQueryString(collection, this.PageIndex - 1);
             this.aLinkPage2.InnerText = (this.PageIndex - 1).ToString();
             if (this.PageIndex <= 1)
                 this.aLinkPage2.Visible = false;
@@ -77,15 +83,23 @@ namespace DeliciousMap.ShareControls
             this.aLinkPage3.HRef = "";
             this.aLinkPage3.InnerText = this.PageIndex.ToString();
 
-            this.aLinkPage4.HRef = url + "?Index=" + (this.PageIndex + 1) + qsText;
+            this.aLinkPage4.HRef = url + "?" + this.BuildQueryString(collection, this.PageIndex + 1);
             this.aLinkPage4.InnerText = (this.PageIndex + 1).ToString();
             if ((this.PageIndex + 1) > pageCount)
                 this.aLinkPage4.Visible = false;
 
-            this.aLinkPage5.HRef = url + "?Index=" + (this.PageIndex + 2) + qsText;
+            this.aLinkPage5.HRef = url + "?" + this.BuildQueryString(collection, this.PageIndex + 2);
             this.aLinkPage5.InnerText = (this.PageIndex + 2).ToString();
             if ((this.PageIndex + 2) > pageCount)
                 this.aLinkPage5.Visible = false;
+        }
+
+        private string BuildQueryString(NameValueCollection collection, int currentPageIndex)
+        {
+            collection.Remove(this.IndexName);
+            collection.Add(this.IndexName, currentPageIndex.ToString());
+
+            return BuildQueryString(collection);
         }
 
         /// <summary> 組合 QueryString </summary>
@@ -102,10 +116,11 @@ namespace DeliciousMap.ShareControls
 
                 foreach (string val in collection.GetValues(key))
                 {
-                    paramList.Add($"&{key}={val}");
+                    paramList.Add($"{key}={val}");
                 }
             }
-            string result = string.Join("", paramList);
+            const string connStr = "&";
+            string result = string.Join(connStr, paramList);
             return result;
         }
     }
