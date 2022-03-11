@@ -23,8 +23,13 @@ namespace DeliciousMap
 
             if (!this.IsPostBack)
             {
+                string keyword = this.Request.QueryString["keyword"];
+
+                if (!string.IsNullOrWhiteSpace(keyword))
+                    this.txtKeyword.Text = keyword;
+
                 int totalRows = 0;
-                var list = this._mgr.GetMapList(_pageSize, pageIndex, out totalRows);
+                var list = this._mgr.GetMapList(keyword, _pageSize, pageIndex, out totalRows);
                 this.ProcessPager(pageIndex, totalRows);
 
                 if (list.Count == 0)
@@ -80,6 +85,12 @@ namespace DeliciousMap
             this.aLinkPage5.InnerText = (pageIndex + 2).ToString();
             if ((pageIndex + 2) > pageCount)
                 this.aLinkPage5.Visible = false;
+        }
+
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            string url = this.Request.Url.LocalPath + "?keyword=" + this.txtKeyword.Text;
+            this.Response.Redirect(url);
         }
     }
 }

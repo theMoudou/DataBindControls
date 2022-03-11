@@ -10,11 +10,16 @@ namespace DeliciousMap.Managers
 {
     public class MapContentManager
     {
-        public List<MapContentModel> GetMapList(int pageSize, int pageIndex, out int totalRows)
+        public List<MapContentModel> GetMapList(string keyword, int pageSize, int pageIndex, out int totalRows)
         {
             int skip = pageSize * (pageIndex - 1);  // 計算跳頁數
             if (skip < 0)
                 skip = 0;
+
+
+            string whereCondition = string.Empty;
+            if (!string.IsNullOrWhiteSpace(keyword))
+                whereCondition = " AND Title LIKE '%'+@keyword+'%' ";
 
             string connStr = ConfigHelper.GetConnectionString();
             string commandText =
@@ -28,13 +33,17 @@ namespace DeliciousMap.Managers
                             FROM MapContents 
                             WHERE 
                                 IsEnable = 'true' 
+                                {whereCondition}
                             ORDER BY CreateDate DESC
-                        )
+                        ) 
+                        {whereCondition}
                     ORDER BY CreateDate DESC ";
             string commandCountText =
-                @"  SELECT COUNT(ID) 
+                $@" SELECT COUNT(ID) 
                     FROM MapContents
-                    WHERE IsEnable = 'true' ";
+                    WHERE IsEnable = 'true' 
+                    {whereCondition}
+                    ";
 
             try
             {
@@ -42,9 +51,11 @@ namespace DeliciousMap.Managers
                 {
                     using (SqlCommand command = new SqlCommand(commandText, conn))
                     {
+                        if (!string.IsNullOrWhiteSpace(keyword))
+                            command.Parameters.AddWithValue("@keyword", keyword);   // 參數化查詢
+
                         conn.Open();
                         SqlDataReader reader = command.ExecuteReader();
-
                         List<MapContentModel> retList = new List<MapContentModel>();    // 將資料庫內容轉為自定義型別清單
                         while (reader.Read())
                         {
@@ -55,6 +66,11 @@ namespace DeliciousMap.Managers
 
                         // 取得總筆數
                         command.CommandText = commandCountText;
+                        if (!string.IsNullOrWhiteSpace(keyword))
+                        {
+                            command.Parameters.Clear();                             // 不同的查詢，必須使用不同的參數集合
+                            command.Parameters.AddWithValue("@keyword", keyword);
+                        }
                         totalRows = (int)command.ExecuteScalar();
 
                         return retList;
