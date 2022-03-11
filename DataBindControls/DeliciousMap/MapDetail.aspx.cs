@@ -1,4 +1,5 @@
-﻿using DeliciousMap.Managers;
+﻿using DeliciousMap.Helpers;
+using DeliciousMap.Managers;
 using DeliciousMap.Models;
 using System;
 using System.Collections.Generic;
@@ -46,8 +47,8 @@ namespace DeliciousMap
             this.imgCoverImage.Src = model.CoverImage;
             this.aLinkPic.HRef = model.CoverImage;
 
-            this.ltlLatitude.Text = model.Latitude.ToString("#0.000000");
-            this.ltlLongitude.Text = model.Longitude.ToString("#0.000000");
+            this.ltlLatitude.Text = TextFormatHelper.ConvertDigitalToDegrees(model.Latitude);
+            this.ltlLongitude.Text = TextFormatHelper.ConvertDigitalToDegrees(model.Longitude);
         }
 
         private void BackToListPage()
