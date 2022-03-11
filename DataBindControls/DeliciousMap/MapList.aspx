@@ -1,5 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.Master" AutoEventWireup="true" CodeBehind="MapList.aspx.cs" Inherits="DeliciousMap.MapList" %>
 
+<%@ Register Src="~/ShareControls/ucPager.ascx" TagPrefix="uc1" TagName="ucPager" %>
+
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style>
         .Pager > a {
@@ -56,8 +59,7 @@
         <p>尚未有資料 </p>
     </asp:PlaceHolder>
 
-    <%--目前在第二頁--%>
-    <div class="Pager">
+    <%--<div class="Pager">
         <a runat="server" id="aLinkFirst" href="MapList.aspx?Index=1">第一頁 </a>
         <a runat="server" id="aLinkPrev" href="MapList.aspx?Index=1">上一頁 </a>
         <a runat="server" id="aLinkPage1" href="MapList.aspx?Index=1">1 </a>
@@ -69,7 +71,9 @@
         <a runat="server" id="aLinkPage5" href="MapList.aspx?Index=5">5</a>
         <a runat="server" id="aLinkNext" href="MapList.aspx?Index=3">下一頁 </a>
         <a runat="server" id="aLinkLast" href="MapList.aspx?Index=10">最未頁 </a>
-    </div>
+    </div>--%>
+
+    <uc1:ucPager runat="server" id="ucPager" PageSize="2" />
 
     <script>
         var initObj = {
