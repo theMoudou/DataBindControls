@@ -11,16 +11,12 @@ namespace DeliciousMap.BackAdmin
 {
     public partial class MemberList : AdminPageBase
     {
-        private AccountManager _mgr = new AccountManager();
-        private static UserLevelEnum[] _pageLevel = { UserLevelEnum.Super };
+        /// <summary> 頁面的權限 </summary>
+        public override UserLevelEnum[] PageUserLevel { get; set; } = { UserLevelEnum.Super };
 
-        protected void Page_Init(object sender, EventArgs e)
-        {
-            if (!_pageLevel.Contains(this._mgr.GetCurrentUser().UserLevel))
-            {
-                this.Response.Redirect("index.aspx");
-            }
-        }
+        private AccountManager _mgr = new AccountManager();
+        
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
