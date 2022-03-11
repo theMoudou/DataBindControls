@@ -87,13 +87,9 @@ namespace DeliciousMap.Managers
 
                         while (reader.Read())
                         {
-                            AccountModel member = new AccountModel()
-                            {
-                                ID = (Guid)reader["ID"],
-                                Account = reader["Account"] as string
-                            };
-
-                            list.Add(member);
+                            AccountModel model = this.BuildAccountModel(reader);
+                            model.Password = null;
+                            list.Add(model);
                         }
 
                         return list;
@@ -127,12 +123,7 @@ namespace DeliciousMap.Managers
 
                         if (reader.Read())
                         {
-                            AccountModel member = new AccountModel()
-                            {
-                                ID = (Guid)reader["ID"],
-                                Account = reader["Account"] as string,
-                                Password = reader["PWD"] as string
-                            };
+                            AccountModel member = this.BuildAccountModel(reader);
 
                             return member;
                         }
@@ -146,6 +137,18 @@ namespace DeliciousMap.Managers
                 Logger.WriteLog("MapContentManager.GetMapList", ex);
                 throw;
             }
+        }
+
+        private AccountModel BuildAccountModel(SqlDataReader reader)
+        {
+            AccountModel model = new AccountModel()
+            {
+                ID = (Guid)reader["ID"],
+                Account = reader["Account"] as string,
+                Password = reader["PWD"] as string,
+                UserLevel = (UserLevelEnum)reader["UserLevel"]
+            };
+            return model;
         }
 
         public AccountModel GetAccount(Guid id)
@@ -168,13 +171,7 @@ namespace DeliciousMap.Managers
 
                         if (reader.Read())
                         {
-                            AccountModel member = new AccountModel()
-                            {
-                                ID = (Guid)reader["ID"],
-                                Account = reader["Account"] as string,
-                                Password = reader["PWD"] as string
-                            };
-
+                            AccountModel member = BuildAccountModel(reader);
                             return member;
                         }
 
@@ -189,30 +186,31 @@ namespace DeliciousMap.Managers
             }
         }
 
-        public void CreateAccount(AccountModel member)
+        public void CreateAccount(AccountModel model)
         {
             // 1. 判斷資料庫是否有相同的 Account
-            if (this.GetAccount(member.Account) != null)
+            if (this.GetAccount(model.Account) != null)
                 throw new Exception("已存在相同的帳號");
 
             // 2. 新增資料
             string connStr = ConfigHelper.GetConnectionString();
             string commandText =
                 @"  INSERT INTO Accounts
-                        (ID, Account, PWD)
+                        (ID, Account, PWD, UserLevel)
                     VALUES
-                        (@id, @account, @pwd)";
+                        (@id, @account, @pwd, @userLevel)";
             try
             {
                 using (SqlConnection conn = new SqlConnection(connStr))
                 {
                     using (SqlCommand command = new SqlCommand(commandText, conn))
                     {
-                        member.ID = Guid.NewGuid();
+                        model.ID = Guid.NewGuid();
 
-                        command.Parameters.AddWithValue("@id", member.ID);
-                        command.Parameters.AddWithValue("@account", member.Account);
-                        command.Parameters.AddWithValue("@pwd", member.Password);
+                        command.Parameters.AddWithValue("@id", model.ID);
+                        command.Parameters.AddWithValue("@account", model.Account);
+                        command.Parameters.AddWithValue("@pwd", model.Password);
+                        command.Parameters.AddWithValue("@userLevel", (int)model.UserLevel);
 
                         conn.Open();
                         command.ExecuteNonQuery();
@@ -221,23 +219,24 @@ namespace DeliciousMap.Managers
             }
             catch (Exception ex)
             {
-                Logger.WriteLog("MapContentManager.GetMapList", ex);
+                Logger.WriteLog("MapContentManager.CreateAccount", ex);
                 throw;
             }
         }
 
-        public void UpdateAccount(AccountModel member)
+        public void UpdateAccount(AccountModel model)
         {
             // 1. 判斷資料庫是否有相同的 Account
-            if (this.GetAccount(member.Account) == null)
-                throw new Exception("帳號不存在：" + member.Account);
+            if (this.GetAccount(model.Account) == null)
+                throw new Exception("帳號不存在：" + model.Account);
 
             // 2. 編輯資料
             string connStr = ConfigHelper.GetConnectionString();
             string commandText =
                 @"  UPDATE Accounts
                     SET 
-                        PWD = @pwd
+                        PWD = @pwd,
+                        UserLevel = @userLevel
                     WHERE
                         ID = @id ";
             try
@@ -246,8 +245,9 @@ namespace DeliciousMap.Managers
                 {
                     using (SqlCommand command = new SqlCommand(commandText, conn))
                     {
-                        command.Parameters.AddWithValue("@id", member.ID);
-                        command.Parameters.AddWithValue("@pwd", member.Password);
+                        command.Parameters.AddWithValue("@id", model.ID);
+                        command.Parameters.AddWithValue("@pwd", model.Password);
+                        command.Parameters.AddWithValue("@userLevel", (int)model.UserLevel);
 
                         conn.Open();
                         command.ExecuteNonQuery();
@@ -256,7 +256,7 @@ namespace DeliciousMap.Managers
             }
             catch (Exception ex)
             {
-                Logger.WriteLog("MapContentManager.GetMapList", ex);
+                Logger.WriteLog("MapContentManager.UpdateAccount", ex);
                 throw;
             }
         }
@@ -297,7 +297,7 @@ namespace DeliciousMap.Managers
             }
             catch (Exception ex)
             {
-                Logger.WriteLog("MapContentManager.GetMapList", ex);
+                Logger.WriteLog("MapContentManager.DeleteAccounts", ex);
                 throw;
             }
         }
