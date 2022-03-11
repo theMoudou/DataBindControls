@@ -9,7 +9,7 @@ using System.Web.UI.WebControls;
 
 namespace DeliciousMap.BackAdmin
 {
-    public partial class MemberDetail : System.Web.UI.Page
+    public partial class MemberDetail : AdminPageBase
     {
         private bool _isEditMode = true;
         private AccountManager _mgr = new AccountManager();

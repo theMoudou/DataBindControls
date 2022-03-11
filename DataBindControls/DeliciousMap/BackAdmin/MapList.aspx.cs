@@ -9,19 +9,12 @@ using System.Web.UI.WebControls;
 
 namespace DeliciousMap.BackAdmin
 {
-    public partial class MapList : System.Web.UI.Page
+    public partial class MapList : AdminPageBase
     {
-        private static UserLevelEnum[] _pageLevel = { UserLevelEnum.Admin, UserLevelEnum.Super };
-        private MapContentManager _mgr = new MapContentManager();
-        private AccountManager _accMgr = new AccountManager();
+        //public override UserLevelEnum[] PageUserLevel { get; set; } = { UserLevelEnum.Super };
 
-        protected void Page_Init(object sender, EventArgs e)
-        {
-            if (!_pageLevel.Contains(this._accMgr.GetCurrentUser().UserLevel))
-            {
-                this.Response.Redirect("index.aspx");
-            }
-        }
+       
+        private MapContentManager _mgr = new MapContentManager();
 
         protected void Page_Load(object sender, EventArgs e)
         {

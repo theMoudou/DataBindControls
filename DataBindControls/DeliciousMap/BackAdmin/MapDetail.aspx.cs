@@ -11,7 +11,7 @@ using System.Web.UI.WebControls;
 
 namespace DeliciousMap.BackAdmin
 {
-    public partial class MapDetail : System.Web.UI.Page
+    public partial class MapDetail : AdminPageBase
     {
         private bool _isEditMode = false;
         private static UserLevelEnum[] _pageLevel = { UserLevelEnum.Admin, UserLevelEnum.Super };

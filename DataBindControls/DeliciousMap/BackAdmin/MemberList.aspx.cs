@@ -9,7 +9,7 @@ using System.Web.UI.WebControls;
 
 namespace DeliciousMap.BackAdmin
 {
-    public partial class MemberList : System.Web.UI.Page
+    public partial class MemberList : AdminPageBase
     {
         private AccountManager _mgr = new AccountManager();
         private static UserLevelEnum[] _pageLevel = { UserLevelEnum.Super };
