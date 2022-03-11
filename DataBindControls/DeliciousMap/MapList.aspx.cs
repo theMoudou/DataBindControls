@@ -73,12 +73,12 @@ namespace DeliciousMap
 
             this.aLinkPage4.HRef = url + "?Index=" + (pageIndex + 1);
             this.aLinkPage4.InnerText = (pageIndex + 1).ToString();
-            if ((pageIndex + 2) > pageCount)
+            if ((pageIndex + 1) > pageCount)
                 this.aLinkPage4.Visible = false;
 
             this.aLinkPage5.HRef = url + "?Index=" + (pageIndex + 2);
             this.aLinkPage5.InnerText = (pageIndex + 2).ToString();
-            if ((pageIndex + 1) > pageCount)
+            if ((pageIndex + 2) > pageCount)
                 this.aLinkPage5.Visible = false;
         }
     }
