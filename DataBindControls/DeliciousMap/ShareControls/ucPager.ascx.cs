@@ -10,11 +10,18 @@ namespace DeliciousMap.ShareControls
 {
     public partial class ucPager : System.Web.UI.UserControl
     {
+        /// <summary> 目前頁數 </summary>
         public int PageIndex { get; set; } = 1;
+
+        /// <summary> 一頁幾筆 </summary>
         public int PageSize { get; set; } = 10;
+
+        /// <summary> 共幾筆 </summary>
         public int TotalRows { get; set; } = 0;
 
         private string _url = null;
+
+        /// <summary> 要跳至哪個 URL (預設為本頁) </summary>
         public string Url
         {
             get
@@ -49,7 +56,6 @@ namespace DeliciousMap.ShareControls
             if ((this.TotalRows % this.PageSize) > 0)
                 pageCount += 1;
 
-            // LocalPath :   MapList.aspx
             string url = this.Url;
             string qsText = this.BuildQueryString(collection);
 

@@ -104,8 +104,10 @@
     <Content Include="JavaScript\jquery-3.6.0.min.js" />
     <Content Include="JavaScript\Modules\MapList.js" />
     <Content Include="Login.aspx" />
+    <Content Include="MapDetail.aspx" />
     <Content Include="MapList.aspx" />
     <Content Include="ShareControls\ucPager.ascx" />
+    <Content Include="Temp.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -190,6 +192,13 @@
     </Compile>
     <Compile Include="Managers\AccountManager.cs" />
     <Compile Include="Managers\MapContentManager.cs" />
+    <Compile Include="MapDetail.aspx.cs">
+      <DependentUpon>MapDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MapDetail.aspx.designer.cs">
+      <DependentUpon>MapDetail.aspx</DependentUpon>
+    </Compile>
     <Compile Include="MapList.aspx.cs">
       <DependentUpon>MapList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -206,6 +215,13 @@
     </Compile>
     <Compile Include="ShareControls\ucPager.ascx.designer.cs">
       <DependentUpon>ucPager.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Temp.aspx.cs">
+      <DependentUpon>Temp.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Temp.aspx.designer.cs">
+      <DependentUpon>Temp.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

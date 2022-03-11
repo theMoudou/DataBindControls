@@ -205,7 +205,37 @@ namespace DeliciousMap.Managers
 
         public MapContentModel GetMap(Guid id)
         {
-            return null;
+            string connStr = ConfigHelper.GetConnectionString();
+            string commandText =
+                $@" SELECT *
+                    FROM MapContents 
+                    WHERE ID = @id ";
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connStr))
+                {
+                    using (SqlCommand command = new SqlCommand(commandText, conn))
+                    {
+                        command.Parameters.AddWithValue("@id", id);
+
+                        conn.Open();
+                        SqlDataReader reader = command.ExecuteReader();
+
+                        MapContentModel model = new  MapContentModel();
+                        if (reader.Read())
+                        {
+                            model = this.BuildMapContentModel(reader);
+                        }
+
+                        return model;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.WriteLog("MapContentManager.GetMap", ex);
+                throw;
+            }
         }
 
         public void CreateMapContent(MapContentModel model, Guid cUserID)
