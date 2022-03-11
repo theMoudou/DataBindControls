@@ -15,7 +15,7 @@ namespace DeliciousMap.Managers
             bool isAccountRight = false;
             bool isPasswordRight = false;
 
-            MemberAccount member = this.GetAccount(account);
+            AccountModel member = this.GetAccount(account);
 
             if (member == null) // 找不到就代表登入失敗
                 return false;
@@ -42,13 +42,13 @@ namespace DeliciousMap.Managers
 
         public bool IsLogined()
         {
-            MemberAccount account = GetCurrentUser();
+            AccountModel account = GetCurrentUser();
             return (account != null);
         }
 
-        public MemberAccount GetCurrentUser()
+        public AccountModel GetCurrentUser()
         {
-            MemberAccount account = HttpContext.Current.Session["MemberAccount"] as MemberAccount;
+            AccountModel account = HttpContext.Current.Session["MemberAccount"] as AccountModel;
             return account;
         }
 
@@ -58,7 +58,7 @@ namespace DeliciousMap.Managers
         }
 
         #region "增刪修查"
-        public List<MemberAccount> GetAccountList(string keyword)
+        public List<AccountModel> GetAccountList(string keyword)
         {
             string connStr = ConfigHelper.GetConnectionString();
             string commandText =
@@ -83,11 +83,11 @@ namespace DeliciousMap.Managers
 
                         conn.Open();
                         SqlDataReader reader = command.ExecuteReader();
-                        List<MemberAccount> list = new List<MemberAccount>();
+                        List<AccountModel> list = new List<AccountModel>();
 
                         while (reader.Read())
                         {
-                            MemberAccount member = new MemberAccount()
+                            AccountModel member = new AccountModel()
                             {
                                 ID = (Guid)reader["ID"],
                                 Account = reader["Account"] as string
@@ -107,7 +107,7 @@ namespace DeliciousMap.Managers
             }
         }
 
-        public MemberAccount GetAccount(string account)
+        public AccountModel GetAccount(string account)
         {
             string connStr = ConfigHelper.GetConnectionString();
             string commandText =
@@ -127,7 +127,7 @@ namespace DeliciousMap.Managers
 
                         if (reader.Read())
                         {
-                            MemberAccount member = new MemberAccount()
+                            AccountModel member = new AccountModel()
                             {
                                 ID = (Guid)reader["ID"],
                                 Account = reader["Account"] as string,
@@ -148,7 +148,7 @@ namespace DeliciousMap.Managers
             }
         }
 
-        public MemberAccount GetAccount(Guid id)
+        public AccountModel GetAccount(Guid id)
         {
             string connStr = ConfigHelper.GetConnectionString();
             string commandText =
@@ -168,7 +168,7 @@ namespace DeliciousMap.Managers
 
                         if (reader.Read())
                         {
-                            MemberAccount member = new MemberAccount()
+                            AccountModel member = new AccountModel()
                             {
                                 ID = (Guid)reader["ID"],
                                 Account = reader["Account"] as string,
@@ -189,7 +189,7 @@ namespace DeliciousMap.Managers
             }
         }
 
-        public void CreateAccount(MemberAccount member)
+        public void CreateAccount(AccountModel member)
         {
             // 1. 判斷資料庫是否有相同的 Account
             if (this.GetAccount(member.Account) != null)
@@ -226,7 +226,7 @@ namespace DeliciousMap.Managers
             }
         }
 
-        public void UpdateAccount(MemberAccount member)
+        public void UpdateAccount(AccountModel member)
         {
             // 1. 判斷資料庫是否有相同的 Account
             if (this.GetAccount(member.Account) == null)

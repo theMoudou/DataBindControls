@@ -125,7 +125,7 @@ namespace DeliciousMap.BackAdmin
             }
 
             // 取得登入者
-            MemberAccount account = new AccountManager().GetCurrentUser();
+            AccountModel account = new AccountManager().GetCurrentUser();
 
             // 儲存
             this._mgr.CreateMapContent(model, account.ID);

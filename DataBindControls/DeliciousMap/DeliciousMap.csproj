@@ -208,8 +208,9 @@
     <Compile Include="MapList.aspx.designer.cs">
       <DependentUpon>MapList.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Models\Account.cs" />
+    <Compile Include="Models\AccountModel.cs" />
     <Compile Include="Models\MapContentModel.cs" />
+    <Compile Include="Models\UserLevelEnum.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShareControls\ucPager.ascx.cs">
       <DependentUpon>ucPager.ascx</DependentUpon>

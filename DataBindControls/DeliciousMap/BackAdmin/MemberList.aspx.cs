@@ -21,7 +21,7 @@ namespace DeliciousMap.BackAdmin
                 string keyword = this.Request.QueryString["keyword"];
                 this.txtKeyword.Text = keyword;
 
-                List<MemberAccount> list = this._mgr.GetAccountList(keyword);
+                List<AccountModel> list = this._mgr.GetAccountList(keyword);
 
                 if (list.Count > 0)
                 {

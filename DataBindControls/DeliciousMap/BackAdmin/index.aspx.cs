@@ -15,7 +15,7 @@ namespace DeliciousMap.BackAdmin
         
         protected void Page_Load(object sender, EventArgs e)
         {
-            MemberAccount account = this._mgr.GetCurrentUser();
+            AccountModel account = this._mgr.GetCurrentUser();
             this.ltlAccount.Text = account.Account;
         }
 

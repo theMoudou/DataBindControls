@@ -20,7 +20,7 @@ namespace DeliciousMap
                 this.plcUserInfo.Visible = true;
                 this.plcLogin.Visible = false;
 
-                MemberAccount account = this._mgr.GetCurrentUser();
+                AccountModel account = this._mgr.GetCurrentUser();
                 this.ltlAccount.Text = account.Account;
             }
             else

@@ -52,7 +52,7 @@ namespace DeliciousMap.BackAdmin
             this.ltlAccount.Visible = true;
             this.txtAccount.Visible = false;
 
-            MemberAccount member = this._mgr.GetAccount(id);
+            AccountModel member = this._mgr.GetAccount(id);
 
             if (member == null)
             {
@@ -70,7 +70,7 @@ namespace DeliciousMap.BackAdmin
 
             if (!_isEditMode)
             {
-                MemberAccount member = new MemberAccount();
+                AccountModel member = new AccountModel();
                 member.Account = account;
                 member.Password = pwd;
 
@@ -88,7 +88,7 @@ namespace DeliciousMap.BackAdmin
                 }
 
                 // 從資料庫查出來更新
-                MemberAccount member = this._mgr.GetAccount(id);
+                AccountModel member = this._mgr.GetAccount(id);
                 member.Password = pwd;
                 this._mgr.UpdateAccount(member);
             }
