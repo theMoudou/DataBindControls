@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TryWebAPI", "TryWebAPI\TryW
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TryReadAPI", "TryReadAPI\TryReadAPI.csproj", "{F319CBD9-8AA2-431C-AC8C-9C5EEB2446D7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPISample", "WebAPISample\WebAPISample.csproj", "{301C0375-20A6-48F6-A9BE-0A0549D8D9D3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{F319CBD9-8AA2-431C-AC8C-9C5EEB2446D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F319CBD9-8AA2-431C-AC8C-9C5EEB2446D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F319CBD9-8AA2-431C-AC8C-9C5EEB2446D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{301C0375-20A6-48F6-A9BE-0A0549D8D9D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{301C0375-20A6-48F6-A9BE-0A0549D8D9D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{301C0375-20A6-48F6-A9BE-0A0549D8D9D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{301C0375-20A6-48F6-A9BE-0A0549D8D9D3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
